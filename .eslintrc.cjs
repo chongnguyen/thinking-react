@@ -24,5 +24,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'react/jsx-no-target-blank': 'off',
+    'no-unused-vars': 'off',
   },
 }
