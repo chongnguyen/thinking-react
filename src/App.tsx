@@ -1,5 +1,6 @@
 import { FilterableProductTable } from './FilterableProductTable.tsx'
 import { ListPlaces } from './Places.tsx'
+import { TodoList } from './features/todos'
 
 function App() {
   return (
@@ -10,6 +11,12 @@ function App() {
       <br />
       <br />
       <ListPlaces />
+
+      <hr />
+      <br />
+      <br />
+      <br />
+      <TodoList />
     </div>
   )
 }
