@@ -25,5 +25,6 @@ module.exports = {
     ],
     'react/jsx-no-target-blank': 'off',
     'no-unused-vars': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
   },
 }

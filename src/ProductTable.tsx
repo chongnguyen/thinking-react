@@ -1,12 +1,22 @@
 import { TProduct } from './type.ts'
 import { ProductCategoryRow } from './ProductCategoryRow.tsx'
-import { ReactElement } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import { ProductRow } from './ProductRow.tsx'
 
 type TProductTable = { [key: string]: TProduct[] }
 type Props = { products: TProduct[] }
 
 export const ProductTable = ({ products }: Props) => {
+  const [obj] = useState({
+    counter: 1,
+  })
+  useEffect(() => {
+    console.log('hello fen')
+    obj.counter++
+  })
+
+  console.log(obj)
+
   const productsMapped = products.reduce((acc, product) => {
     const { category } = product
     if (!acc[category]) {

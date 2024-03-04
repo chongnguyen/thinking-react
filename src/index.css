@@ -29,3 +29,10 @@
     background-color: #ffffff;
   }
 }
+
+ol,
+ul {
+  list-style: revert;
+  margin: revert;
+  padding: revert;
+}
