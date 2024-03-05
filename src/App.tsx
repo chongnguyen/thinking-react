@@ -1,6 +1,7 @@
 import { FilterableProductTable } from './FilterableProductTable.tsx'
 import { ListPlaces } from './Places.tsx'
 import { TodoList } from './features/todos'
+import { SectionHeading } from './features/heading'
 
 function App() {
   return (
@@ -8,15 +9,15 @@ function App() {
       <FilterableProductTable />
       <hr />
       <br />
-      <br />
-      <br />
       <ListPlaces />
 
       <hr />
       <br />
-      <br />
-      <br />
       <TodoList />
+
+      <hr />
+      <br />
+      <SectionHeading />
     </div>
   )
 }
