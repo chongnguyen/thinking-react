@@ -1,28 +1,13 @@
-import { TTask } from '../types.ts'
 import { Task } from './Task.tsx'
+import { useTasks } from '../context/TaskProvider.tsx'
 
-type TaskListProps = {
-  tasks: Array<TTask>
-  handleCompleted: (id: number) => void
-  handleEdit: (id: number, value: string) => void
-  handleDelete: (id: number) => void
-}
-export const TaskList = ({
-  tasks,
-  handleCompleted,
-  handleEdit,
-  handleDelete,
-}: TaskListProps) => {
+export const TaskList = () => {
+  const tasks = useTasks()
+
   return (
     <div className="flex flex-col gap-4">
       {tasks.map((task) => (
-        <Task
-          key={task.id}
-          task={task}
-          handleCompleted={handleCompleted}
-          handleDelete={handleDelete}
-          handleEdit={handleEdit}
-        />
+        <Task key={task.id} task={task} />
       ))}
     </div>
   )

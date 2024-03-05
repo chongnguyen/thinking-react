@@ -1,33 +1,52 @@
-import { TTask } from '../types.ts'
+import { ETaskAction, TTask } from '../types.ts'
 import { useEffect, useRef, useState } from 'react'
+import { useTaskDispatch } from '../context/TaskProvider.tsx'
 
 type Props = {
   task: TTask
-  handleCompleted: (id: number) => void
-  handleEdit: (id: number, value: string) => void
-  handleDelete: (id: number) => void
 }
-export const Task = ({
-  task,
-  handleCompleted,
-  handleEdit,
-  handleDelete,
-}: Props) => {
+export const Task = ({ task }: Props) => {
+  const dispatch = useTaskDispatch()
+
   const [isEditing, setIsEditing] = useState(false)
   const [taskValue, setTaskValue] = useState(task.text)
 
   const inputRef = useRef<HTMLInputElement>(null)
-
-  function handleUpdateTask(id: number, value: string) {
-    setIsEditing(false)
-    handleEdit(id, value)
-  }
 
   useEffect(() => {
     if (inputRef?.current) {
       inputRef.current.focus()
     }
   }, [isEditing])
+
+  function handleDelete(id: number) {
+    dispatch({
+      type: ETaskAction.delete,
+      id,
+      text: '',
+    })
+  }
+
+  function handleEdit(id: number, value: string) {
+    dispatch({
+      type: ETaskAction.edit,
+      id,
+      text: value,
+    })
+  }
+
+  function handleCompleted(id: number) {
+    dispatch({
+      type: ETaskAction.done,
+      id,
+      text: '',
+    })
+  }
+
+  function handleUpdateTask(id: number, value: string) {
+    setIsEditing(false)
+    handleEdit(id, value)
+  }
 
   return (
     <li className="flex gap-3">

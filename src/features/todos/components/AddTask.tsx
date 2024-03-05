@@ -1,16 +1,27 @@
 import { useState } from 'react'
+import { ETaskAction } from '../types.ts'
+import { useTaskDispatch } from '../context/TaskProvider.tsx'
 
-type Props = {
-  handleAddTask: (task: string) => void
-}
-export const AddTask = ({ handleAddTask }: Props) => {
+export const AddTask = () => {
   const [task, setTask] = useState<string>('')
+  const dispatch = useTaskDispatch()
+
+  function handleAddTask(value: string) {
+    if (dispatch) {
+      dispatch({
+        type: ETaskAction.add,
+        id: nextId++,
+        text: value,
+      })
+    }
+  }
 
   return (
     <div className="flex gap-2 justify-center">
       <div>
         <input
           type="text"
+          className="border"
           value={task}
           onChange={(event) => {
             setTask(event.target.value)
@@ -30,3 +41,5 @@ export const AddTask = ({ handleAddTask }: Props) => {
     </div>
   )
 }
+
+let nextId = 3

@@ -1,6 +1,6 @@
-import { ETaskAction, TTask } from './types.ts'
+import { ETaskAction, TTask } from '../types.ts'
 
-type Action = { type: ETaskAction; text: string; id: number }
+export type Action = { type: ETaskAction; text: string; id: number }
 
 export function tasksReducer(tasks: TTask[], action: Action): TTask[] {
   switch (action.type) {
